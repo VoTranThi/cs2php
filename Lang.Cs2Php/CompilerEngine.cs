@@ -200,6 +200,13 @@ namespace Lang.Cs2Php
                     comp.RemoveMetadataReferences(i);
                 var ref1 = refToRemove.Select(i => i.FilePath).Union(_referenced).ToList();
                 ref1.Add(typeof(PhpDummy).Assembly.GetCodeLocation().FullName);
+                //sdasdasd
+                ref1.Add(typeof(System.Object).Assembly.GetCodeLocation().FullName);
+                ref1.Add(typeof(System.String).Assembly.GetCodeLocation().FullName);
+                ref1.Add(typeof(System.Boolean).Assembly.GetCodeLocation().FullName);
+
+
+                //asdasdasd
                 ref1.AddRange(Referenced);
                 filenames = ref1.Distinct().ToArray();
             }

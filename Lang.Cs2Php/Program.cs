@@ -34,7 +34,7 @@ namespace Lang.Cs2Php
                 processingContext.Engine.CsProject = processingContext.files.First();
                 processingContext.Engine.OutDir = processingContext.files.Last();
 
-
+                
                 using (var a = new AppConfigManipulator())
                 {
                     DoCompilation(processingContext.Engine, ref showUsage);
@@ -77,12 +77,16 @@ namespace Lang.Cs2Php
                     ce.TranlationHelpers.Clear();
                     ce.ReferencedPhpLibsLocations.Clear();
 
+                    
+
                     // src and dest can be in different application domain
                     // we need to add item by item
                     ce.Set1(cfg.Referenced.ToArray(),
                         cfg.TranlationHelpers.ToArray(),
                         cfg.ReferencedPhpLibsLocations.Select(a => a.Key + "\n" + a.Value).ToArray()
                         );
+
+                   
                     ce.BinaryOutputDir = cfg.BinaryOutputDir;
                     Debug.Assert(ce.Referenced.Count == cfg.Referenced.Count);
                     Debug.Assert(ce.TranlationHelpers.Count == cfg.TranlationHelpers.Count);
